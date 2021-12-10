@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Secure Bundle for AstraDB ###
+/src/main/resources/secure-connect-myreads.zip
