@@ -1,11 +1,10 @@
-package connection;
+package com.myproject.myreadspreloaddata.connection;
 
 import java.io.File;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Configuration;
 
-@Configuration
+
 @ConfigurationProperties("datastax.astra")
 public class DatastaxAstraConfigs {
     private File secureConnectBundle;
