@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AuthorRepository extends CassandraRepository<AuthorEntity,String> {
-    
+    public AuthorEntity findByAuthorId(String authorId);
 }
