@@ -1,9 +1,31 @@
 spring:
+  application:
+    name: myreads-app
   security:
     oauth2:
       client:
         registration:
           github:
             client-id: Iv1.6828d4a6243fca25
-            client-secret: efa1b7689bd8dfa486c58a943a615561789fa177
-          
+            client-secret: efa1b7689bd8dfa486c58a943a615561789fa177 
+  data:
+    cassandra:
+      keyspace-name: main
+      username: MBeaRZcunOPYTihbNkyUyUJP
+      password: _Ejhga-tbAQZhCWZ0sg95,KR2b__0_uRctwKCEWQkfh,SZYqYW6+z3yWJ6o8cMNAuy3nF360QRKLaPCg5Mk6TsjhctXeeL_RsrIrCSd6JkJZ_5kAexR-Wq,1vD1BIp6q
+      request:
+        timeout: 10s
+      schema-action: create-if-not-exists
+      connection:
+        connect-timeout: 10s
+        init-query-timeout: 10s
+
+
+datastax.astra.secure-connect-bundle: secure-connect-myreads.zip
+
+astra:
+  db: 
+    id: 99318148-b2eb-4f5d-b776-b82fd0407361-1
+    region: europe-west1
+    keyspace-name: main
+    application.token: AstraCS:MBeaRZcunOPYTihbNkyUyUJP:4066f232c36aabd8fc1a4774294c05850530990edb71441ccbf1d20358371c82
