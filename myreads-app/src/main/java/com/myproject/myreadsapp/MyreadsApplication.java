@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 @RestController
 @EnableConfigurationProperties(value = DatastaxAstraConfigs.class)
-@ComponentScan(basePackageClasses=BookController.class)
 public class MyreadsApplication {
 
 	public static void main(String[] args) {
