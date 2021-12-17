@@ -17,8 +17,16 @@
         </nav>
 
     <section class="content">
-        <h5 class="card-title display-1" th:text="${result.numFound}">Book name</h5>
-
+      <div class="card-group" >
+        <div class="card" style="flex: 0 0 18% ;margin: 30px" th:each="result : ${results}">
+          <img th:src="${result.cover_i}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title" th:text="${result.title}">Book title</h5>
+            <p class="card-text" th:text="${result.cover_i}">Some qusick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" th:href="@{'/books/'+${result.key}}" class="btn btn-primary">Browse book</a>
+          </div>
+        </div>
+      </div>
     </section>
     </div>
 </body>
