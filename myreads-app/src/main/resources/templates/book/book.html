@@ -31,12 +31,41 @@
 
                   <form th:if="${loginId}" th:attr="action=@{/addBookTrack}" method="POST">
                     <input type="hidden"
-                      name="${_csrf.}"                       
-                      value="${_csrf."
+                      name="${_csrf.parameterName}"                       
+                      value="${_csrf.token}"
                     >
-
-                    
-
+                    <input type="hidden"
+                      th:value="${book.bookId}"
+                    >
+                    <div class="form-group">
+                      <label for="startDate">Start Date</label>
+                      <input type="date" class="form-control" id="startDate" name="startDate">
+                    </div>
+                    <div class="form-group">
+                      <label for="completeDate">Complete Date</label>
+                      <input type="date" class="form-control" id="completeDate" name="completeDate">
+                    </div>
+                    <div class="form-group">
+                      <label for="status">Status</label>
+                      <select class="form-select" name="status" aria-label="Reading status">
+                        <option selected value="0">Status</option>
+                        <option value="reading">Currently Reading</option>
+                        <option value="finished">Finished</option>
+                        <option value="didNotFinished">Not Finished</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="rating">Rating</label>
+                      
+                    <select class="form-select" name="rating">
+                      <option selected>Rating</option>
+                      <option value="1">&#9733;</option>
+                      <option value="2">&#9733;&#9733;</option>
+                      <option value="3">&#9733;&#9733;&#9733;</option>
+                      <option value="4">&#9733;&#9733;&#9733;&#9733;</option>
+                      <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
+                    </select>
+                    </div>                                    
                     <button type="submit" class="btn btn-primary">Submit</button>
                   </form>
 

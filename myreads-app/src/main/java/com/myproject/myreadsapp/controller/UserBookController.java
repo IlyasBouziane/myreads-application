@@ -24,6 +24,9 @@ public class UserBookController {
     @PostMapping("/addBookTrack")
     public ModelAndView addBookTrack(@AuthenticationPrincipal OAuth2User principal,@RequestBody MultiValueMap<String,String> dataFromForm){
         
+        //Test the payload content
+        System.out.println(dataFromForm);
+        
         UserBookTrack bookTrack = new UserBookTrack();
         bookTrack.setStart_reading(LocalDate.parse(dataFromForm.getFirst("startDate")));
         bookTrack.setComplete_reading(LocalDate.parse(dataFromForm.getFirst("completeDate")));
