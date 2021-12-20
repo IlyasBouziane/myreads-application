@@ -28,6 +28,18 @@
                   <p class="card-text display-5" th:text="${book.authorsNames}">Authors names</p>
                   <p class="card-text" th:text="${book.bookDescription}">Book description</p>
                   <p class="card-text">Published Date: <small class="text-muted" th:text="${book.publishedDate}"></small></p>
+
+                  <form th:if="${loginId}" th:attr="action=@{/addBookTrack}" method="POST">
+                    <input type="hidden"
+                      name="${_csrf.}"                       
+                      value="${_csrf."
+                    >
+
+                    
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+
                 </div>
               </div>
             </div>
