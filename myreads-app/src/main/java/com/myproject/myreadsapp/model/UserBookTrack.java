@@ -11,7 +11,7 @@ import org.springframework.data.cassandra.core.mapping.CassandraType.Name;
 @Table(value = "book_tracked_by_user")
 public class UserBookTrack {
     @PrimaryKey
-    private UserBookTrack bookTrackByUser;
+    private UserBookTrackPrimaryKey bookTrackByUserId;
 
     @Column("rating")
     @CassandraType(type = Name.INT)
@@ -21,17 +21,20 @@ public class UserBookTrack {
     private LocalDate start_reading;
 
     @CassandraType(type = Name.DATE)
-    private LocalDate end_reading;
+    private LocalDate complete_reading;
+
+    @CassandraType(type = Name.TEXT)
+    private String readingStatus;
 
     public UserBookTrack() {
     }
 
-    public UserBookTrack getBookTrackByUser() {
-        return bookTrackByUser;
+    public UserBookTrackPrimaryKey getBookTrackByUserId() {
+        return bookTrackByUserId;
     }
 
-    public void setBookTrackByUser(UserBookTrack bookTrackByUser) {
-        this.bookTrackByUser = bookTrackByUser;
+    public void setBookTrackByUserId(UserBookTrackPrimaryKey bookTrackByUserId) {
+        this.bookTrackByUserId = bookTrackByUserId;
     }
 
     public Integer getBookRating() {
@@ -50,13 +53,23 @@ public class UserBookTrack {
         this.start_reading = start_reading;
     }
 
-    public LocalDate getEnd_reading() {
-        return end_reading;
+    public LocalDate getComplete_reading() {
+        return complete_reading;
     }
 
-    public void setEnd_reading(LocalDate end_reading) {
-        this.end_reading = end_reading;
+    public void setComplete_reading(LocalDate complete_reading) {
+        this.complete_reading = complete_reading;
     }
 
+    public String getReadingStatus() {
+        return readingStatus;
+    }
+
+    public void setReadingStatus(String readingStatus) {
+        this.readingStatus = readingStatus;
+    }
+
+    
+  
     
 }
