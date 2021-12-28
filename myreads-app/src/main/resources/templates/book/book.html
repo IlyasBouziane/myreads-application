@@ -31,10 +31,11 @@
 
                   <form th:if="${loginId}" th:attr="action=@{/addBookTrack}" method="POST">
                     <input type="hidden"
-                      name="${_csrf.parameterName}"                       
-                      value="${_csrf.token}"
+                      th:name="${_csrf.parameterName}"                       
+                      th:value="${_csrf.token}"
                     >
                     <input type="hidden"
+                      name="bookId"
                       th:value="${book.bookId}"
                     >
                     <div class="form-group">
@@ -48,7 +49,7 @@
                     <div class="form-group">
                       <label for="status">Status</label>
                       <select class="form-select" name="status" aria-label="Reading status">
-                        <option selected value="0">Status</option>
+                        <option selected value="0">Select status</option>
                         <option value="reading">Currently Reading</option>
                         <option value="finished">Finished</option>
                         <option value="didNotFinished">Not Finished</option>
@@ -58,7 +59,7 @@
                       <label for="rating">Rating</label>
                       
                     <select class="form-select" name="rating">
-                      <option selected>Rating</option>
+                      <option selected>Select rating</option>
                       <option value="1">&#9733;</option>
                       <option value="2">&#9733;&#9733;</option>
                       <option value="3">&#9733;&#9733;&#9733;</option>

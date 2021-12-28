@@ -26,7 +26,7 @@ public class UserBookController {
         
         //Test the payload content
         System.out.println(dataFromForm);
-        
+
         UserBookTrack bookTrack = new UserBookTrack();
         bookTrack.setStart_reading(LocalDate.parse(dataFromForm.getFirst("startDate")));
         bookTrack.setComplete_reading(LocalDate.parse(dataFromForm.getFirst("completeDate")));
@@ -37,12 +37,12 @@ public class UserBookController {
 
         String bookId = dataFromForm.getFirst("bookId");
         key.setBookId(bookId);
-        key.setUserId(principal.getAttribute("loginId"));
+        key.setUserId(principal.getAttribute("login"));
         bookTrack.setBookTrackByUserId(key);
 
         bookTrackRepository.save(bookTrack);
 
-        return new ModelAndView("redirect:/books"+bookId);
+        return new ModelAndView("redirect:/books/"+bookId);
     }
     
 

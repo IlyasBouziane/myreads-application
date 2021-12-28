@@ -1,8 +1,8 @@
 spring.application.name: myreads-preload-data
 
 datadump.location:
-  authors: myreads-preload-data/src/main/resources/test_authors_dump.txt
-  books: myreads-preload-data/src/main/resources/test_books_dump.txt   
+  authors: src/main/resources/test_authors_dump.txt
+  books: src/main/resources/test_books_dump.txt   
 
 spring: 
   data:
@@ -17,11 +17,11 @@ spring:
         connect-timeout: 10s
         init-query-timeout: 10s
 
-datastax.astra.secure-connect-bundle: secure-connect-myreads.zip
+datastax.astra.secure-connect-bundle: secure-connect-myreadsdb.zip
 
 astra:
   db: 
-    id: 99318148-b2eb-4f5d-b776-b82fd0407361-1
-    region: europe-west1
+    id: 5ece3807-c3ae-4b01-a16a-bad3eaa16d90-1
+    region: eu-central-1
     keyspace-name: main
     application.token: AstraCS:MBeaRZcunOPYTihbNkyUyUJP:4066f232c36aabd8fc1a4774294c05850530990edb71441ccbf1d20358371c82
