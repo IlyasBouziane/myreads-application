@@ -30,8 +30,8 @@ public class UserBookController {
         UserBookTrack bookTrack = new UserBookTrack();
         bookTrack.setStart_reading(LocalDate.parse(dataFromForm.getFirst("startDate")));
         bookTrack.setComplete_reading(LocalDate.parse(dataFromForm.getFirst("completeDate")));
-        bookTrack.setBookRating(Integer.parseInt(dataFromForm.getFirst("rating")));
-        bookTrack.setReadingStatus(dataFromForm.getFirst("status"));
+        bookTrack.setReadingStatus(dataFromForm.getFirst("readingStatus"));
+        bookTrack.setBookRating(Integer.parseInt(dataFromForm.getFirst("bookRating")));
         
         UserBookTrackPrimaryKey key = new UserBookTrackPrimaryKey();
 
