@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<body>
+    <div th:fragment="search-fragment">
+        <form action="search.html" th:attr="action=@{/search}">
+        <div class="input-group mb-3">
+            <input type="text" name ="query" class="form-control" placeholder="Search for a title">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="submit">Search</button>
+            </div>
+          </div>
+        </form>
+    </div>
+   
+</body>
+</html>
