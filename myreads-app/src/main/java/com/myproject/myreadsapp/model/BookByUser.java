@@ -50,6 +50,7 @@ public class BookByUser{
     public BookByUser() {
     }
 
+
     public String getUserId() {
         return userId;
     }
@@ -60,6 +61,14 @@ public class BookByUser{
 
     public String getBookId() {
         return bookId;
+    }
+
+    public String getCoverUrl() {
+        return coverUrl;
+    }
+
+    public void setCoverUrl(String coverUrl) {
+        this.coverUrl = coverUrl;
     }
 
     public void setBookId(String bookId) {
