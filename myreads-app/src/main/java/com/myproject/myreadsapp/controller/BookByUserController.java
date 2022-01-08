@@ -7,8 +7,8 @@ import com.myproject.myreadsapp.model.BookByUser;
 import com.myproject.myreadsapp.repository.BookByUserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
+import org.springframework.data.cassandra.core.query.CassandraPageRequest;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.OAuth2AuthenticatedPrincipal;
 import org.springframework.stereotype.Controller;
@@ -27,7 +27,7 @@ public class BookByUserController {
     public String getBooksByUser(@AuthenticationPrincipal OAuth2AuthenticatedPrincipal principal, Model model){
         if(principal != null && principal.getAttribute("login") != null){
             String userId = principal.getAttribute("login");
-            Slice<BookByUser> booksSlice = bookByUserRepository.findAllById(userId, Pageable.ofSize(10));
+            Slice<BookByUser> booksSlice = bookByUserRepository.findAllById(userId, CassandraPageRequest.of(0,100));
             List<BookByUser> booksList = booksSlice.getContent();
             booksList= booksList.stream().map(book->{
                 String imageUrl;
@@ -40,6 +40,7 @@ public class BookByUserController {
                 return book;    
             }).collect(Collectors.toList());
             model.addAttribute("books", booksList);
+            System.out.println(booksList);
             return "home";
 
         } else {

@@ -7,5 +7,5 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 
 public interface BookByUserRepository extends CassandraRepository<BookByUser,String> {
-    Slice<BookByUser> findAllById(String userId, Pageable pageable);
+    Slice<BookByUser> findAllById(String id, Pageable pageable);
 }

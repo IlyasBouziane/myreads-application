@@ -3,7 +3,6 @@ package com.myproject.myreadsapp.model;
 import java.util.List;
 import java.util.UUID;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.cassandra.core.cql.Ordering;
 import org.springframework.data.cassandra.core.cql.PrimaryKeyType;
@@ -16,8 +15,8 @@ import org.springframework.data.cassandra.core.mapping.CassandraType.Name;
 @Table(value = "books_by_user")
 public class BookByUser{
 
-    @Id @PrimaryKeyColumn(value ="user_id",ordinal = 0,type = PrimaryKeyType.PARTITIONED)
-    private String userId;
+    @PrimaryKeyColumn(value ="user_id",ordinal = 0,type = PrimaryKeyType.PARTITIONED)
+    private String id;
 
     
     @PrimaryKeyColumn(name = "book_id", ordinal = 1, type = PrimaryKeyType.CLUSTERED)
@@ -51,12 +50,18 @@ public class BookByUser{
     }
 
 
-    public String getUserId() {
-        return userId;
+    public String getid
+    () {
+        return id
+        ;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setid
+    (String id
+    ) {
+        this.id
+         = id
+        ;
     }
 
     public String getBookId() {
