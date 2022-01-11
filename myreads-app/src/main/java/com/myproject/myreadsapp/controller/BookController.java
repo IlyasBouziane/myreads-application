@@ -31,6 +31,7 @@ public class BookController {
         Optional<Book> book = bookRepository.findById(bookId);
         String imageUrl;
         if(book.isPresent()){
+            // the book may not have a cover
             if(book.get().getCoversIds() != null) {
                 if(book.get().getCoversIds().size()>0 && book.get().getCoversIds()!=null){
                     imageUrl = COVER_IMAGE_ROOT+book.get().getCoversIds().get(0)+"-L.jpg";

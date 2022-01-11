@@ -49,6 +49,7 @@ public class UserBookController {
 
         bookTrackRepository.save(bookTrack);
 
+        // add the book to My Books
         Book book= bookRepository.findById(bookId).get();
         BookByUser booksByUser = new BookByUser();
         booksByUser.setid(principal.getAttribute("login"));

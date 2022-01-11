@@ -31,6 +31,7 @@ public class BookByUserController {
             List<BookByUser> booksList = booksSlice.getContent();
             booksList= booksList.stream().distinct().map(book->{
                 String imageUrl;
+                // the book may not have a cover
                 if(book.getCoverIds() != null) {
                     if(book.getCoverIds().size()>0 && book.getCoverIds()!=null){
                         imageUrl = COVER_IMAGE_ROOT+book.getCoverIds().get(0)+"-L.jpg";
