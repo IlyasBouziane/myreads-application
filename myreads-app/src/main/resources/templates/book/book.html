@@ -28,7 +28,13 @@
                   <p class="card-text display-5" th:text="${book.authorsNames}">Authors names</p>
                   <p class="card-text" th:text="${book.bookDescription}">Book description</p>
                   <p class="card-text">Published Date: <small class="text-muted" th:text="${book.publishedDate}"></small></p>
-
+                  <div th:unless="${loginId}">
+                    <p class="card-text display-6" ><b>Login to track this book</b></p>
+                    <div style="margin-bottom: 30px;"  class="d-grip gap-2 d-sm-flex  justify-content-sm-center ">
+                      <a type="button" href="/oauth2/authorization/github" class="btn btn-lg btn-secondary">Login with Github</a>
+                    </div>
+                  </div>
+                  
                   <form th:if="${loginId}" th:attr="action=@{/addBookTrack}" method="POST">
                     <input type="hidden"
                       th:name="${_csrf.parameterName}"                       
