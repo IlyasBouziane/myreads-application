@@ -49,10 +49,10 @@
                     <div class="form-group">
                       <label for="status">Status</label>
                       <select class="form-select" name="status" id="status" aria-label="Reading status" th:field="${book_track.readingStatus}">
-                        <option selected value="No status">Select status</option>
-                        <option value="reading">Currently Reading</option>
-                        <option value="finished">Finished</option>
-                        <option value="didNotFinished">Not Finished</option>
+                        <option selected value="3">Select status</option>
+                        <option value="0-reading">Currently Reading</option>
+                        <option value="1-finished">Finished</option>
+                        <option value="2-didNotFinished">Not Finished</option>
                       </select>
                     </div>
                     <div class="form-group">

@@ -1,8 +1,8 @@
 spring.application.name: myreads-preload-data
 
 datadump.location:
-  authors: src/main/resources/test_authors_dump.txt
-  books: src/main/resources/test_books_dump.txt   
+  authors: myreads-preload-data/src/main/resources/test_authors_dump.txt
+  books: myreads-preload-data/src/main/resources/test_books_dump.txt   
 
 spring: 
   data:
@@ -12,7 +12,7 @@ spring:
       password: _Ejhga-tbAQZhCWZ0sg95,KR2b__0_uRctwKCEWQkfh,SZYqYW6+z3yWJ6o8cMNAuy3nF360QRKLaPCg5Mk6TsjhctXeeL_RsrIrCSd6JkJZ_5kAexR-Wq,1vD1BIp6q
       request:
         timeout: 10s
-      schema-action: create-if-not-exists
+      schema-action: recreate
       connection:
         connect-timeout: 10s
         init-query-timeout: 10s

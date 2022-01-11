@@ -30,7 +30,9 @@
     <div
       th:insert="components/book-search :: search-fragment">
     </div>
-    <div th:each="book : ${books}">
+    <h1>My Books</h1>
+
+    <div style="max-width: 540px;" th:each="book : ${books}">
       <div class="card mb-3">
         <div class="row g-0">
           <div class="col-md-4">
@@ -39,15 +41,34 @@
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              <h5 class="card-title"
+              <a th:href="@{'/books/'+${book.bookId}}" class="card-title"
                 th:text="${book.bookName}">Book
-                title</h5>
+                title</a>
               <p class="card-text"
                 th:text="${book.authorNames}">
                 Authors' names</p>
-              <p class="card-text"
-                th:text="${book.readingStatus}">
-                Reading status</p>
+              <div th:switch="${book.readingStatus}">
+                <p class="card-text"
+                th:case="0-reading">
+                Currently Reading</p>
+                <p class="card-text"
+                th:case="1-finished">
+                Finished</p>
+                <p class="card-text"
+                th:case="2-didNotFinished">
+                Not Finished</p>
+                <p class="card-text"
+                th:case="3">
+                No status - Please add status </p>
+              </div>
+              <p class="card-text">
+                <span th:if="${book.rating} == 0">
+                  No ranking made
+                </span>
+                <span  th:if="${book.rating} > 0" th:each="rating : ${#numbers.sequence(0, book.rating-1)}">
+                  &#9733;
+                </span>
+              </p>
             </div>
           </div>
 

@@ -29,18 +29,21 @@ public class BookByUserController {
             String userId = principal.getAttribute("login");
             Slice<BookByUser> booksSlice = bookByUserRepository.findAllById(userId, CassandraPageRequest.of(0,100));
             List<BookByUser> booksList = booksSlice.getContent();
-            booksList= booksList.stream().map(book->{
+            booksList= booksList.stream().distinct().map(book->{
                 String imageUrl;
-                if(book.getCoverIds().size()>0 && book.getCoverIds()!=null){
-                    imageUrl = COVER_IMAGE_ROOT+book.getCoverIds().get(0)+"-M.jpg";
-                }else{
+                if(book.getCoverIds() != null) {
+                    if(book.getCoverIds().size()>0 && book.getCoverIds()!=null){
+                        imageUrl = COVER_IMAGE_ROOT+book.getCoverIds().get(0)+"-L.jpg";
+                    }else{
+                        imageUrl ="/images/no-image.jpg";
+                    }
+                } else {
                     imageUrl ="/images/no-image.jpg";
                 }
                 book.setCoverUrl(imageUrl);
                 return book;    
             }).collect(Collectors.toList());
             model.addAttribute("books", booksList);
-            System.out.println(booksList);
             return "home";
 
         } else {

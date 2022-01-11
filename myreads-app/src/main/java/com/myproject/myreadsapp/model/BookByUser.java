@@ -1,7 +1,7 @@
 package com.myproject.myreadsapp.model;
 
 import java.util.List;
-import java.util.UUID;
+
 
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.cassandra.core.cql.Ordering;
@@ -16,16 +16,13 @@ import org.springframework.data.cassandra.core.mapping.CassandraType.Name;
 public class BookByUser{
 
     @PrimaryKeyColumn(value ="user_id",ordinal = 0,type = PrimaryKeyType.PARTITIONED)
-    private String id;
+    private String id; //authorId
 
     
     @PrimaryKeyColumn(name = "book_id", ordinal = 1, type = PrimaryKeyType.CLUSTERED)
     @CassandraType(type = Name.TEXT)
     private String bookId;
 
-    @PrimaryKeyColumn(type = PrimaryKeyType.CLUSTERED, ordering = Ordering.DESCENDING)
-    @CassandraType(type = Name.TIMEUUID)
-    private UUID timeUuid;
 
     @PrimaryKeyColumn(type = PrimaryKeyType.CLUSTERED, ordering = Ordering.ASCENDING)
     @CassandraType(type = Name.TEXT)
@@ -42,18 +39,21 @@ public class BookByUser{
     @CassandraType(type = Name.LIST, typeArguments = Name.TEXT)
     private List<String> coverIds;
 
+    @Column("rating")
+    @CassandraType(type = Name.INT)
+    private int rating;
+
     @Transient
     private String coverUrl;
 
 
     public BookByUser() {
     }
-
+    
 
     public String getid
     () {
-        return id
-        ;
+        return id;
     }
 
     public void setid
@@ -72,6 +72,17 @@ public class BookByUser{
         return coverUrl;
     }
 
+    
+    public int getRating() {
+        return rating;
+    }
+
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
+
     public void setCoverUrl(String coverUrl) {
         this.coverUrl = coverUrl;
     }
@@ -79,15 +90,6 @@ public class BookByUser{
     public void setBookId(String bookId) {
         this.bookId = bookId;
     }
-
-    public UUID getTimeUuid() {
-        return timeUuid;
-    }
-
-    public void setTimeUuid(UUID timeUuid) {
-        this.timeUuid = timeUuid;
-    }
-
     public String getReadingStatus() {
         return readingStatus;
     }
@@ -120,6 +122,41 @@ public class BookByUser{
         this.coverIds = coverIds;
     }
 
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((bookId == null) ? 0 : bookId.hashCode());
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        return result;
+    }
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        BookByUser other = (BookByUser) obj;
+        if (bookId == null) {
+            if (other.bookId != null)
+                return false;
+        } else if (!bookId.equals(other.bookId))
+            return false;
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
+            return false;
+        return true;
+    }
+
+
+    
     
 
 }

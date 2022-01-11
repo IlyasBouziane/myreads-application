@@ -31,11 +31,16 @@ public class BookController {
         Optional<Book> book = bookRepository.findById(bookId);
         String imageUrl;
         if(book.isPresent()){
-            if(book.get().getCoversIds().size()>0 && book.get().getCoversIds()!=null){
-                imageUrl = COVER_IMAGE_ROOT+book.get().getCoversIds().get(0)+"-L.jpg";
-            }else{
+            if(book.get().getCoversIds() != null) {
+                if(book.get().getCoversIds().size()>0 && book.get().getCoversIds()!=null){
+                    imageUrl = COVER_IMAGE_ROOT+book.get().getCoversIds().get(0)+"-L.jpg";
+                }else{
+                    imageUrl ="/images/no-image.jpg";
+                }
+            } else {
                 imageUrl ="/images/no-image.jpg";
             }
+           
 
             if(principal != null && principal.getAttribute("login") !=null ){
                 model.addAttribute("loginId",principal.getAttribute("login"));
