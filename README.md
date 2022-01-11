@@ -55,21 +55,21 @@ This project contains 2 applications :
 ## Screenshots
 
 <div align="center">
-    <img src="images/first-page.png" >
+    <img src="images/first-page.PNG" >
   </a>
 </div>
 
 <div align="center">
-    <img src="images/search-book.png" >
+    <img src="images/search-book.PNG" >
   </a>
 </div>
 
 <div align="center">
-    <img src="images/track-book.png" >
+    <img src="images/track-book.PNG" >
   </a>
 </div>
 
 <div align="center">
-    <img src="images/my-books.png" >
+    <img src="images/my-books.PNG" >
   </a>
 </div>
